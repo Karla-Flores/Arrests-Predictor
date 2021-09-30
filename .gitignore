@@ -1,6 +1,4 @@
 
-Resources/Location Description.csv
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -131,8 +129,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .DS_Store
+
 Resources/Crimes_-_2001_to_Present.csv
 Resources/Location Description.csv
-Resources/Location Description.csv
-
-chicago_crime_db.csv
+Resources/chicago_crime_db.csv
