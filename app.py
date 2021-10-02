@@ -1,37 +1,33 @@
-from sqlalchemy.sql.expression import distinct
-import pandas as pd
 import numpy as np
-import sqlalchemy
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-from flask import Flask, jsonify, render_template
+from flask import Flask, request, jsonify, render_template
+import pickle
 
-
-#################################################
-# Flask Setup
-#################################################
 app = Flask(__name__)
+model = pickle.load(open('Model/logisticregression.sav', 'rb'))
 
+@app.route('/')
+def home():
+    return render_template('dashboard.html')
 
-@app.route("/")
-def api_list():
-    """List all available api routes."""
+@app.route('/predict',methods=['POST'])
+def predict():
 
-    return (
-        f"Available Routes:<br/>"
-        f"/api/v1.0/dashboard<br/>"
-        f"/api/v1.0/year/&lt;year&gt;<br/>"
-        f"/api/v1.0/monthly/&lt;year&gt;/&lt;primary_type&gt;<br>"
-        f"/api/v1.0/&lt;year&gt;/&lt;primary_type&gt;"
-        f""
-    )
+    int_features = [int(x) for x in request.form.values()]
+    final_features = [np.array(int_features)]
+    prediction = model.predict(final_features)
 
-@app.route("/model/parameters")
-def parameters():
-    model = pickle.load('logisticregression.sav')
-    parameters = request.get()
+    output = prediction
 
+    return render_template('dashboard.html', prediction_text=output)
 
-if __name__ == '__main__':
+@app.route('/results',methods=['POST'])
+def results():
+
+    data = request.get_json(force=True)
+    prediction = model.predict([np.array(list(data.values()))])
+
+    output = prediction[0]
+    return jsonify(output)
+
+if __name__ == "__main__":
     app.run(debug=True)
