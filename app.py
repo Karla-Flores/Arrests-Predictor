@@ -1,33 +1,19 @@
+# Import libraries
 import numpy as np
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 import pickle
-
 app = Flask(__name__)
-model = pickle.load(open('Model/logisticregression.sav', 'rb'))
-
-@app.route('/')
-def home():
-    return render_template('dashboard.html')
-
-@app.route('/predict',methods=['POST'])
+# Load the model
+model = pickle.load(open('Model- sav/logisticregression.sav','rb'))
+print(model)
+@app.route('/api',methods=['POST'])
 def predict():
-
-    int_features = [int(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
-    prediction = model.predict(final_features)
-
-    output = prediction
-
-    return render_template('dashboard.html', prediction_text=output)
-
-@app.route('/results',methods=['POST'])
-def results():
-
+    # Get the data from the POST request.
     data = request.get_json(force=True)
-    prediction = model.predict([np.array(list(data.values()))])
-
+    # Make prediction using model loaded from disk as per the data.
+    prediction = model.predict([[np.array(data['exp'])]])
+    # Take the first value of prediction
     output = prediction[0]
     return jsonify(output)
-
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(port=5000, debug=True)
