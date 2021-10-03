@@ -2,6 +2,8 @@
 import numpy as np
 from flask import Flask, request, jsonify
 import pickle
+
+
 app = Flask(__name__)
 # Load the model
 model = pickle.load(open('Model- sav/logisticregression.sav','rb'))
@@ -16,4 +18,4 @@ def predict():
     output = prediction[0]
     return jsonify(output)
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(debug=True)
