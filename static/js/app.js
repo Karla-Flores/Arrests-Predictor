@@ -14,6 +14,13 @@ d3.select("#model_result").on("click", function(){
     console.log(`127.0.0.1:5000/results/${crime}/${location}/${season}/${hour}/${lat}/${lon}/${domestic}`)
     d3.json(`/results/${crime}/${location}/${season}/${hour}/${lat}/${lon}/${domestic}`)
 
-    .then(function(data){console.log(data)})
+    .then(function(data){
+        
+        
+        // console.log(data)
+        console.log(data['result'])
+        console.log(data['prob'])
+    
+    })
 });
 

@@ -118,8 +118,10 @@ def results(crime,location,season,hour,lat,lon,domestic):
     
     # data = np.array([crime,location,season,hour,lat,lon,domestic]).reshape(1,-1)
     output = model.predict(data)
+    prob = model.predict_proba(data)
+    print(prob)
     
-    return jsonify({'result': output.tolist()})
+    return jsonify({'result': output.tolist(), 'prob': prob.tolist()})
 
 
 if __name__ == "__main__":
