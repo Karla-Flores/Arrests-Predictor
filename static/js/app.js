@@ -20,7 +20,7 @@ d3.select("#model_result").on("click", function(){
         document.getElementById('arrest_prob').innerHTML = arrest_prob+" %"
         // console.log(data)()
         console.log(data.result)
-        console.log(`probability of arrest is ${(data.prob[0][1]*100).toFixed()} %`)
+        console.log(`probability of arrest is ${(data.prob[0][1]*100).toFixed(2)} %`)
         
     
     })
