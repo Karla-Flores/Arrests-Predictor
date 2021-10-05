@@ -11,8 +11,9 @@ d3.select("#model_result").on("click", function(){
     let lat = d3.select("#lat_dropdown").property('value')
     let lon = d3.select("#lon_dropdown").property('value')
     let domestic = d3.select("#dom_dropdown").property('value')
-    console.log(crime)
-    d3.json(`/results/${crime}/${location}/${season}/${hour}/${lat}/${lon}/${domestic}`)
+    console.log(`127.0.0.1:5000/results/${crime}/${location}/${season}/${hour}/${lat}/${lon}/${domestic}`)
+    d3.json(`http://127.0.0.1:5000/results/${crime}/${location}/${season}/${hour}/${lat}/${lon}/${domestic}`)
+
     .then(function(data){console.log(data)})
 });
 
