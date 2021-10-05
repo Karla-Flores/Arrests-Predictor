@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
     <!-- Dark MDB theme -->
     <link rel="stylesheet" href="../css/mdb.dark.min.css" />
+    <!-- d3 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <!-- Regular MDB theme -->
     <!-- <link rel="stylesheet" href="css/mdb.min.css" /> -->
 </head>
@@ -59,7 +61,7 @@
                     <div class="card-body">
                       <p class="card-text">
             
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <select id='crime_dropdown' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected>Crime</option>
                             <option value="1">THEFT</option>
                             <option value="2">BATTERY</option>
@@ -90,7 +92,7 @@
                             <option value="27">OTHER</option>  
                           </select>
                     
-                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                          <select id='location_dropdown' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected>Location</option>
                             <option value="1">RESIDENCE</option>
                             <option value="2">CTA</option>
@@ -107,7 +109,7 @@
                             <option value="3">AIRPORT</option>
                           </select>
                     
-                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                          <select id='season_dropdown' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected>Season</option>
                             <option value="1">Winter</option>
                             <option value="2">Spring</option>
@@ -115,36 +117,29 @@
                             <option value="3">Autumn</option>
                           </select>
                     
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <select id='hour_dropdown' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected>Hour</option>
                             <option value="1">Morning</option>
                             <option value="2">Afternoon</option>
                             <option value="3">Evening</option>
                             <option value="3">Night</option>
                           </select>
+
+
+                          <label for="lat_dropdown" class='float-start'>Latitude :</label>
+                          <input id='lat_dropdown' class="form-control form-control-lg mb-3" type='number' min="41.64" max="42.03" step='0.01' aria-label=".form-control-lg example"/>
+
+                          <label for="lon_dropdown" class='float-start'>Longitude :</label>
+                          <input id='lon_dropdown' class="form-control form-control-lg mb-3" type='number' min="-87.90" max="-87.53" step='0.01' aria-label=".form-control-lg example"/>
+                  
                     
-                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option selected>Latitude</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
-                    
-                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option selected>Longitude</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
-                    
-                    
-                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                          <select id='dom_dropdown' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected>Domestic</option>
                             <option value="1">TRUE</option>
-                            <option value="2">FALSE</option>
+                            <option value="0">FALSE</option>
                           </select>
               </p>
-              <button type="button" class="btn btn-primary">
+              <button id="model_result" type="button" class="btn btn-primary">
                 Button
               </button>
             </div>
@@ -177,6 +172,8 @@
     <script type="text/javascript" src="../js/mdb.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
+    <!-- js -->
+    <script type="text/javascript" src="../js/app.js"></script>
 </body>
 
 </html>
