@@ -13,7 +13,7 @@
     <!-- Google Fonts Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
     <!-- Dark MDB theme -->
-    <link rel="stylesheet" href="../css/mdb.dark.min.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/mdb.dark.min.css')}}" />
     <!-- d3 -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <!-- Regular MDB theme -->
@@ -33,10 +33,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                     <a class="nav-link active" aria-current="page" href="proposal.html">Proposal</a>
                     <a class="nav-link active" aria-current="page" href="stats.html">Graphics</a>
-                    <a class="nav-link active" aria-current="page" href="model.html">Model</a>
+                    <a class="nav-link active" aria-current="page" href="/model">Model</a>
                     <a class="nav-link active" aria-current="page" href="#">Team</a>
                 </div>
             </div>
@@ -169,11 +169,11 @@
     <!-- End your project here-->
 
     <!-- MDB -->
-    <script type="text/javascript" src="../js/mdb.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/mdb.min.js')}}"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
     <!-- js -->
-    <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
 </body>
 
 </html>

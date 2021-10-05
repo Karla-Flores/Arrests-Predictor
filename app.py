@@ -1,6 +1,6 @@
 # Import libraries
 import numpy as np
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, url_for
 import pickle
 import pickle as p
 import pandas as pd
@@ -15,7 +15,7 @@ app = Flask(__name__)
 # print(model)
 
 # Load the model
-model = pickle.load(open('Model- sav/logisticregression.sav','rb'))
+model = p.load(open('Model- sav/logisticregression.sav','rb'))
 print(model)
 
 @app.route("/")
@@ -31,7 +31,7 @@ def home():
     # )
 
 @app.route("/model")
-def model():
+def model_results():
     return render_template('model.html')
 
 @app.route("/proposal")
