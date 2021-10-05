@@ -34,9 +34,6 @@ def home():
 def model_results():
     return render_template('model.html')
 
-@app.route("/proposal")
-def proposal():
-    return render_template("proposal.html")
 
 @app.route("/stats")
 def stats():
