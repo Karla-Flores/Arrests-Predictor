@@ -128,6 +128,13 @@
                       <option value="Night">Night</option>
                     </select>
 
+                    <select id='dom_dropdown' class="form-select form-select-lg mb-3"
+                      aria-label=".form-select-lg example">
+                      <option selected>Domestic</option>
+                      <option value="1">TRUE</option>
+                      <option value="0">FALSE</option>
+                    </select>
+
                     <label for="lat_dropdown" class='float-start'>Latitude :</label>
                     <input id='lat_dropdown' class="form-control form-control-lg mb-3" type='number' min="41.64"
                       max="42.03" step='0.01' aria-label=".form-control-lg example" />
@@ -136,12 +143,13 @@
                     <input id='lon_dropdown' class="form-control form-control-lg mb-3" type='number' min="-87.90"
                       max="-87.53" step='0.01' aria-label=".form-control-lg example" />
 
-                    <select id='dom_dropdown' class="form-select form-select-lg mb-3"
-                      aria-label=".form-select-lg example">
-                      <option selected>Domestic</option>
-                      <option value="1">TRUE</option>
-                      <option value="0">FALSE</option>
-                    </select>
+                    <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">
+                      <iframe src="https://maps.google.com/maps?q=chicago&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                        style="border:0; height: 100%; width: 100%" allowfullscreen></iframe>
+                    </div>
+                    <br/>
+                    <div id="mapid"></div>
+
                   </p>
 
                   <button id="model_result" type="button" class="btn btn-danger btn-rounded" class="btn btn-primary">
@@ -150,7 +158,7 @@
                 </div>
               </div>
 
-              <div id="map"></div>
+              <!-- <div id="map"></div> -->
 
               <div class="card bg-dark text-white shadow-1-strong" style="height: 240px;">
                 <!-- <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);"></div>
@@ -165,7 +173,7 @@
                 
               </div>
               <!-- adding the map -->
-              <div class="col-3 testing-parameters content-div current" style="width: 500px !important">
+              <!-- <div class="col-3 testing-parameters content-div current" style="width: 500px !important">
                 <form class="h-100 p-3 mx-auto">
                   <div class="container w-100">
                     <div class="row justify-content-center">
@@ -175,49 +183,16 @@
                             <div class="card-img-top d-none" style="width: 100%; height: 250px" id="mapContainer">
                               <div id="map"></div>
                             </div>
-                            <div class="card-body">
-                              <div class="row pb-3">
-                                <div class="col">
-                                  <div class="container-fluid">
-                                    <div class="row">
-                                      <label for="location">Location:</label>
-                                    </div>
-                                    <div class="row" id="originalLocation">
-                                      <div class="input-group input-group-sm mb-2">
-                                        <input type="text" class="form-control" aria-describedby="locationBtn" />
-                                        <div class="input-group-append">
-                                          <button type="button" role="button" href="#" class="btn btn-info" id="locationBtn">
-                                            <i class="fad fa-globe-americas"></i>
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row d-none" id="mapLocation">
-                                      <div class="input-group input-group-sm mb-2">
-                                        <div class="input-group-prepend">
-                                          <span class="input-group-text">Lat</span>
-                                        </div>
-                                        <input class="form-control" type="text" name="lat" id="lat" />
-                                        <div class="input-group-prepend">
-                                          <span class="input-group-text">Lon</span>
-                                        </div>
-                                        <input class="form-control" type="text" name="lon" id="lon" />
-                                      </div>
-                                    </div>
-                                    
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </form>
-              </div>
+              </div> -->
 
-              <div id="map" style="height: 500px;"></div>
+              <!-- <div id="map" style="height: 500px;"></div> -->
+              
             </div>
             <!--Grid column-->
 
@@ -258,9 +233,9 @@
     crossorigin=""></script>
   
   <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-  <script
+  <!-- <script
   src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
-  async></script>
+  async></script> -->
   <!-- js -->
   <script type="text/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
 

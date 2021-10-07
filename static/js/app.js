@@ -26,21 +26,33 @@ d3.select("#model_result").on("click", function(){
     })
 });
 
-// const street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
+// const myMap = L.map("map", {
+//     center: [
+//         15.6, -28.7
+//     ],
+//     zoom: 3
 // });
 
-const myMap = L.map("map", {
-    center: [
-        15.6, -28.7
-    ],
-    zoom: 3
-});
+// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+// }).addTo(myMap);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(myMap);
+// var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
+// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//     maxZoom: 18,
+//     id: 'mapbox.streets',
+//     accessToken: 'REPLACE_WITH_YOUR_TOKEN'
+// }).addTo(mymap);
+
+mapid.on('click', function(e){
+    var coord = e.latlng;
+    var lat = coord.lat;
+    var lng = coord.lng;
+    console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+    });
 
 // setTimeout(function() {map.invalidateSize()},1000)
 
