@@ -26,79 +26,31 @@ d3.select("#model_result").on("click", function () {
         })
 });
 
+var mymap = L.map('map').setView([41.87, -87.62], 13);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoicXVpbGx5YSIsImEiOiJja3J2Y2QwZG0wNWF4MnBuMTVld2kyMzQ3In0.9pUO8Kx3WXzQJ_Amcn-VNw'
+}).addTo(mymap);
 
-// const myMap = L.map("map", {
-//     center: [
-//         15.6, -28.7
-//     ],
-//     zoom: 3
-// });
+var popup = L.popup();
 
-// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-// }).addTo(myMap);
-
-// var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
-// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-//     maxZoom: 18,
-//     id: 'mapbox.streets',
-//     accessToken: 'REPLACE_WITH_YOUR_TOKEN'
-// }).addTo(mymap);
-
-// map.on('click', function(e){
-//     var coord = e.latlng;
-//     var lat = coord.lat;
-//     var lng = coord.lng;
-//     console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
-//     });
-
-// setTimeout(function() {map.invalidateSize()},1000)
-
-// function initMap() {
-//     const myLatlng = { lat: 25.34512195709302, lng: -89.8890446170271 };
-//     const map = new google.maps.Map(document.getElementById('map'), {
-//         zoom: 3,
-//         center: myLatlng,
-//         streetViewControl: false,
-//         mapTypeId: 'terrain',
-//         fullscreenControl: false,
-//         mapTypeControl: false,
-//     });
-//     // Configure the click listener.
-//     map.addListener('click', (mapsMouseEvent) => {
-//         $('#lat').val(mapsMouseEvent.latLng.lat);
-//         $('#lon').val(mapsMouseEvent.latLng.lng);
-//     });
-// }
-
-function initMap() {
-    const myLatlng = { lat: -25.363, lng: 131.044 };
-    const map = new google.maps.Map(document.getElementById("mapid"), {
-        zoom: 4,
-        center: myLatlng,
-    });
-    // Create the initial InfoWindow.
-    let infoWindow = new google.maps.InfoWindow({
-        content: "Click the map to get Lat/Lng!",
-        position: myLatlng,
-    });
-
-    infoWindow.open(map);
-    // Configure the click listener.
-    map.addListener("click", (mapsMouseEvent) => {
-        // Close the current InfoWindow.
-        infoWindow.close();
-        // Create a new InfoWindow.
-        infoWindow = new google.maps.InfoWindow({
-            position: mapsMouseEvent.latLng,
-        });
-        infoWindow.setContent(
-            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-        );
-        infoWindow.open(map);
-    });
-    console.log("Harika")
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at: " + e.latlng.toString())
+        .openOn(mymap);
 }
+mymap.on('click', onMapClick);
 
+mymap.on('click', function(e){
+    var coord = e.latlng;
+    var lat_c = coord.lat;
+    var lng_c= coord.lng;
+    d3.select("#lat_dropdown").attr('value', lat_c)
+    d3.select("#lon_dropdown").attr('value', lng_c)
+    console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+    });
