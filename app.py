@@ -6,8 +6,8 @@ import pickle as p
 import pandas as pd
 
 
-# app = Flask(__name__)
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
+# app = Flask(__name__, template_folder='templates')
 
 
 # Load the model
