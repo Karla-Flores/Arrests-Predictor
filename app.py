@@ -6,13 +6,9 @@ import pickle as p
 import pandas as pd
 
 
-app = Flask(__name__)
-# app = Flask(__name__, template_folder='app')
+# app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
-
-# Load the model
-# model = pickle.load(open('Model- sav/logisticregression.pickle','rb'))
-# print(model)
 
 # Load the model
 model = p.load(open('Model- sav/logisticregression.sav','rb'))
@@ -22,13 +18,6 @@ print(model)
 def home():
     return render_template("index.html")
 
-# @app.route("/api")
-# def api_list():
-#     """List all available api routes."""
-#     return (
-#         f"Available Routes:<br>"
-#         f"Here goes some api"
-    # )
 
 @app.route("/model")
 def model_results():
