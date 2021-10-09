@@ -5,7 +5,7 @@ import pickle
 import pickle as p
 import pandas as pd
 
-
+# Starting Flask
 app = Flask(__name__)
 # app = Flask(__name__, template_folder='templates')
 
